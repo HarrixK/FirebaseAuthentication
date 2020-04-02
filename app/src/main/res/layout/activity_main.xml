@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_wave_11" />
+
+    <ImageView
+        android:id="@+id/IconIV"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/firebaseicon" />
+
+    <EditText
+        android:id="@+id/EmailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/IconIV"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/et_layout"
+        android:hint="Enter Email Here"
+        android:inputType="textEmailAddress"
+        android:maxLength="25"
+        android:maxLines="1"
+        android:nextFocusDown="@id/PasswordET"
+        android:padding="10dp"
+        android:textColor="@color/colorAccentDark"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="@color/colorPrimary"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/PasswordET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EmailET"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/et_layout"
+        android:hint="Enter Password Here"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:nextFocusDown="@id/Signbtn"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="@color/colorPrimary" />
+
+
+    <Button
+        android:id="@+id/Okbtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PasswordET"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_layout"
+        android:text="Sign Up"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/Signbtn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Okbtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_layout"
+        android:text="Sign In"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/ProgressBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="520dp"
+        android:background="@drawable/progressbar"
+        android:outlineAmbientShadowColor="@color/colorPrimaryDark"
+        android:outlineSpotShadowColor="@color/colorPrimaryDark"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/GoogleSignIn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Signbtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_layout"
+        android:drawableStart="@drawable/ic_google_logo"
+        android:text="Google Sign-In "
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/GoogleSignOut"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoogleSignIn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_layout"
+        android:text="Google Sign-Out "
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoogleSignOut"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_wave_10" />
+
+
+</RelativeLayout>

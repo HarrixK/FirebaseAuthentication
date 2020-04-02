@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hotel Application</string>
+    <string name="Enter_The_Password_Here" />
+    <string name="Enter_The_Email_Here" />
+</resources>
