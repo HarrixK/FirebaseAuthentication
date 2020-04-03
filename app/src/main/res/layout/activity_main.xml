@@ -56,10 +56,10 @@
         android:maxLength="10"
         android:maxLines="1"
         android:nextFocusDown="@id/Signbtn"
-        android:textStyle="bold"
         android:padding="10dp"
         android:textColorHighlight="@color/colorAccent"
-        android:textColorHint="@color/colorPrimary" />
+        android:textColorHint="@color/colorPrimary"
+        android:textStyle="bold" />
 
 
     <Button
@@ -94,7 +94,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="520dp"
+        android:layout_marginTop="556dp"
         android:background="@drawable/progressbar"
         android:outlineAmbientShadowColor="@color/colorPrimaryDark"
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
@@ -102,43 +102,47 @@
 
     <Button
         android:id="@+id/GoogleSignIn"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/Signbtn"
         android:layout_centerInParent="true"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/btn_layout"
         android:drawableStart="@drawable/ic_google_logo"
-        android:text="Google Sign-In "
+        android:text="Google Sign-In"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold" />
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="350dp"
+        android:layout_below="@id/GoogleSignIn"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"/>
 
     <Button
-        android:id="@+id/GoogleSignOut"
-        android:layout_width="200dp"
+        android:id="@+id/Facebook"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/GoogleSignIn"
         android:layout_centerInParent="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:visibility="invisible"
         android:background="@drawable/btn_layout"
-        android:text="Google Sign-Out "
+        android:drawableStart="@drawable/ic_google_logo"
+        android:text="Facebook Sign-In"
         android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        android:visibility="invisible" />
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GoogleSignOut"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:layout_centerInParent="true"
+        android:layout_below="@id/Facebook"
+        android:id="@+id/text_user" />
+
 
     <ImageView
         android:layout_width="match_parent"

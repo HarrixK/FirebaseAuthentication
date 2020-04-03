@@ -2,4 +2,7 @@
     <string name="app_name">Hotel Application</string>
     <string name="Enter_The_Password_Here" />
     <string name="Enter_The_Email_Here" />
+    <string name="title_activity_maps">Map</string>
+    <string name="facebook_app_id">3073797579346865</string>
+    <string name="fb_login_protocol_scheme">fb3073797579346865</string>
 </resources>

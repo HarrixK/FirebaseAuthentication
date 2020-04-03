@@ -35,10 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="300dp"
-        android:background="@drawable/btn_layout"
+        android:layout_alignParentBottom="true"
         android:text="Logout"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="250dp"
+        android:background="@drawable/btn_layout"
         android:textColor="@color/colorPrimaryDark" />
 
 
@@ -48,10 +50,11 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_below="@id/logout"
+        android:layout_above="@id/logout"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
-        android:text="TextView" />
+        android:textColor="@color/colorPrimaryDark"
+         />
 
     <TextView
         android:id="@+id/mail"
@@ -60,9 +63,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="TextView"
-        android:layout_below="@id/name"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_above="@id/name"
         android:layout_centerInParent="true" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/avatar"
+        android:layout_above="@id/name"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"/>
 
     <ImageView
         android:layout_width="match_parent"
