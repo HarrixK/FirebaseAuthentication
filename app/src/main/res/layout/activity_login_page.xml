@@ -30,50 +30,93 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/ic_arrow_back" />
 
-    <Button
-        android:id="@+id/logout"
+    <TextView
+        android:id="@+id/Line"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/IconIV"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Line"
         android:layout_centerInParent="true"
-        android:layout_alignParentBottom="true"
-        android:text="Logout"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="250dp"
-        android:background="@drawable/btn_layout"
-        android:textColor="@color/colorPrimaryDark" />
+        android:layout_marginBottom="20dp"
+        android:text="Welcome"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Welcome"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_below="@id/mail"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/btn_layout"
+        android:drawableStart="@drawable/ic_exit"
+        android:padding="10dp"
+        android:text="Logout"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/Upload"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/Download"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_layout"
+        android:drawableStart="@drawable/ic_file_upload"
+        android:padding="10dp"
+        android:text="Upload Image"
+        android:onClick="openUploadPage"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/Download"
+        android:onClick="openDownloadPage"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_above="@id/logout"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
+        android:background="@drawable/btn_layout"
+        android:drawableStart="@drawable/ic_file_download"
+        android:padding="10dp"
+        android:text="Download Image"
         android:textColor="@color/colorPrimaryDark"
-         />
-
-    <TextView
-        android:id="@+id/mail"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_above="@id/name"
-        android:layout_centerInParent="true" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/avatar"
-        android:layout_above="@id/name"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"/>
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="match_parent"

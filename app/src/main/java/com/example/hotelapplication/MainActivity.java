@@ -19,6 +19,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private EditText emailET, paswwordET;
-    private Button signup, signin, googlesignin, facebook, LoginButtonm, login_butt;
+    private Button signup, signin, googlesignin, facebook, loginButton;
 
     private ProgressBar bar;
     private FirebaseAuth objectFirebaseAuth;
@@ -74,6 +75,32 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         connectXML();
 
+        try {
+            FacebookRequest();
+            mCallbackManager = CallbackManager.Factory.create();
+            loginButton = (LoginButton) findViewById(R.id.login_button);
+
+            ((LoginButton) loginButton).registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancel() {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onError(FacebookException error) {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch (Exception ex) {
+            Toast.makeText(this, "FacebookRequest Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
         objectFirebaseAuth = FirebaseAuth.getInstance();
         mCallbackManager = CallbackManager.Factory.create();
 
@@ -99,6 +126,13 @@ public class MainActivity extends AppCompatActivity {
                 bar.setVisibility(View.VISIBLE);
             }
         });
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FacebookRequest();
+            }
+        });
+
 
     }
 
@@ -112,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(MainActivity.this, "facebook:onSuccess:" + loginResult, Toast.LENGTH_SHORT).show();
                 handleFacebookAccessToken(loginResult.getAccessToken());
+                startActivity(new Intent(MainActivity.this, LoginPage.class));
+                finish();
             }
 
             @Override
@@ -128,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken" + token);
-        Toast.makeText(this, "handleFacebookAccessToken" + token, Toast.LENGTH_SHORT).show();
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
@@ -139,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(MainActivity.this, "signInWithCredential:success", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
+                            String Username = mAuth.getCurrentUser().toString();
                             Intent intent = new Intent(getApplicationContext(), LoginPage.class);
                             startActivity(intent);
                         } else {
@@ -162,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             text = findViewById(R.id.text);
             text_user = findViewById(R.id.text_user);
 
-            facebook = findViewById(R.id.Facebook);
+            facebook = findViewById(R.id.login_button);
         } catch (Exception ex) {
             Toast.makeText(this, "Connect To XML Error" + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }

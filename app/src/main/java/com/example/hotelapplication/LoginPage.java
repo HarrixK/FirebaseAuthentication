@@ -18,12 +18,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginPage extends AppCompatActivity {
 
     private Button Back;
-    private ImageView img;
 
     TextView name, mail;
     Button logout;
@@ -47,15 +48,13 @@ public class LoginPage extends AppCompatActivity {
         name = findViewById(R.id.name);
 
         mail = findViewById(R.id.mail);
-        img = findViewById(R.id.avatar);
+        mAuth = FirebaseAuth.getInstance();
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if (signInAccount != null) {
             name.setText(signInAccount.getDisplayName());
             mail.setText(signInAccount.getEmail());
             Uri photo = signInAccount.getPhotoUrl();
-            img.setImageURI(photo);
-
         }
 
         logout = findViewById(R.id.logout);
@@ -79,5 +78,21 @@ public class LoginPage extends AppCompatActivity {
     public void change() {
         startActivity(new Intent(LoginPage.this, MainActivity.class));
         finish();
+    }
+
+    public void openUploadPage(View view) {
+        try {
+            startActivity(new Intent(LoginPage.this, upload_page.class));
+        } catch (Exception e) {
+            Toast.makeText(this, "OpeningUploadPage:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void openDownloadPage(View view) {
+        try {
+            startActivity(new Intent(LoginPage.this, download_page.class));
+        } catch (Exception e) {
+            Toast.makeText(this, "OpeningDownloadPage:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
