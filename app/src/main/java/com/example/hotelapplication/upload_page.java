@@ -1,9 +1,5 @@
 package com.example.hotelapplication;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,18 +15,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ServerTimestamp;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.firestore.v1.DocumentTransform;
 
-import com.google.firebase.firestore.FirebaseFirestore;
-
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,10 +54,16 @@ public class upload_page extends AppCompatActivity {
     private FirebaseFirestore objectFirebaseFirestore;
     private boolean isImageSelected = false;
 
+    private String currentDate;
+    private Object ServerTimestamp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_page);
+
+        Calendar calendar = Calendar.getInstance();
+        currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
         objectFirebaseFirestore = FirebaseFirestore.getInstance();
         objectStorageReference = FirebaseStorage.getInstance().getReference("Gallery");
@@ -105,6 +114,7 @@ public class upload_page extends AppCompatActivity {
         try {
             Intent objectIntent = new Intent(); //Step 1:create the object of intent
             objectIntent.setAction(Intent.ACTION_GET_CONTENT); //Step 2: You want to get some data
+            imageNameET.setText(currentDate);
 
             objectIntent.setType("image/*");//Step 3: Images of all type
             startActivityForResult(objectIntent, REQUEST_CODE);
@@ -173,8 +183,8 @@ public class upload_page extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             String url = task.getResult().toString();
                             Map<String, Object> objectMap = new HashMap<>();
-
                             objectMap.put("URL", url);
+                            objectMap.put("Server Time Stamp", FieldValue.serverTimestamp());
                             objectFirebaseFirestore.collection("Gallery")
                                     .document(imageNameET.getText().toString())
                                     .set(objectMap)

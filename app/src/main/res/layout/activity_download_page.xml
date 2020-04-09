@@ -69,9 +69,9 @@
         android:maxLines="1"
         android:padding="5dp"
         android:paddingStart="10dp"
-        android:textColor="@color/colorAccentDark"
+        android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccentDark"
-        android:textStyle="bold" />
+        android:textStyle="italic" />
 
     <ImageView
         android:id="@+id/imageToDownloadIV"

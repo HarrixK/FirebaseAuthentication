@@ -18,8 +18,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firestore.v1.DocumentTransform;
 
 import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import io.grpc.Server;
 
 public class download_page extends AppCompatActivity {
 
@@ -28,6 +35,7 @@ public class download_page extends AppCompatActivity {
 
     private ImageView imageToDownloadIV;
     private TextView gallery;
+    private String currentDate;
 
     private ProgressBar bar;
     private FirebaseFirestore objectFirebaseFirestore;
@@ -37,6 +45,9 @@ public class download_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_page);
         objectFirebaseFirestore = FirebaseFirestore.getInstance();
+        Calendar calendar = Calendar.getInstance();
+        currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
 
         back = findViewById(R.id.back);
         objectFirebaseFirestore = FirebaseFirestore.getInstance();
@@ -51,6 +62,8 @@ public class download_page extends AppCompatActivity {
 
             imagenameET = findViewById(R.id.imageNameET);
             gallery = findViewById(R.id.textgallery);
+
+            imagenameET.setText(currentDate);
 
             bar = findViewById(R.id.ProgressBar);
             back.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +95,7 @@ public class download_page extends AppCompatActivity {
         try {
             if (!imagenameET.getText().toString().isEmpty()) {
                 bar.setVisibility(View.VISIBLE);
+                imageToDownloadIV.setImageResource(R.drawable.loading);
                 objectFirebaseFirestore.collection("Gallery")
                         .document(imagenameET.getText().toString())
                         .get()
@@ -117,4 +131,5 @@ public class download_page extends AppCompatActivity {
             Toast.makeText(this, "DownloadError: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+
 }
